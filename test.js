@@ -1,0 +1,35 @@
+var expand = require('./')
+var test = require('tape')
+var ndarray = require('ndarray')
+
+test('expand 1-channel bitmaps into rgba pixmaps', function(t) {
+  var bitmap = ndarray([
+    0xff, 0, 0xaa
+  ], [3, 1, 1])
+
+  var pixmap 
+  pixmap = expand(bitmap)
+  t.deepEqual(Array.prototype.slice.call(pixmap.data),
+      [ 0xff, 0xff, 0xff, 0xff,
+        0xff, 0xff, 0xff, 0x00,
+        0xff, 0xff, 0xff, 0xaa ], 'expands into alpha')
+
+  pixmap = expand(bitmap, [ 0xff, 0x00, 0x00 ])
+  t.deepEqual(Array.prototype.slice.call(pixmap.data),
+      [ 0xff, 0x00, 0x00, 0xff,
+        0xff, 0x00, 0x00, 0x00,
+        0xff, 0x00, 0x00, 0xaa ], 'expands into alpha with red fill')
+
+  pixmap = expand.alpha(bitmap, [ 0xff, 0x00, 0x00 ])
+  t.deepEqual(Array.prototype.slice.call(pixmap.data),
+      [ 0xff, 0x00, 0x00, 0xff,
+        0xff, 0x00, 0x00, 0x00,
+        0xff, 0x00, 0x00, 0xaa ], 'same as expand()')
+
+  pixmap = expand.opaque(bitmap)
+  t.deepEqual(Array.prototype.slice.call(pixmap.data),
+      [ 0xff, 0xff, 0xff, 0xff,
+        0x00, 0x00, 0x00, 0xff,
+        0xaa, 0xaa, 0xaa, 0xff ], 'expands into RGB')
+  t.end()
+})

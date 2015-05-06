@@ -1,0 +1,44 @@
+{
+  "name": "ndarray-bitmap-to-rgba",
+  "version": "1.0.0",
+  "description": "expand 1-channel bitmaps into rgba pixmaps",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com",
+    "url": "https://github.com/mattdesl"
+  },
+  "dependencies": {
+    "ndarray": "^1.0.16",
+    "ndarray-ops": "^1.2.2"
+  },
+  "devDependencies": {
+    "tape": "^4.0.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "pixmap",
+    "bitmap",
+    "bitmaps",
+    "pixmaps",
+    "pix",
+    "pixels",
+    "image",
+    "rgb",
+    "rgba",
+    "alpha",
+    "intensity",
+    "luminosity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Jam3/ndarray-bitmap-to-rgba.git"
+  },
+  "homepage": "https://github.com/Jam3/ndarray-bitmap-to-rgba",
+  "bugs": {
+    "url": "https://github.com/Jam3/ndarray-bitmap-to-rgba/issues"
+  }
+}
